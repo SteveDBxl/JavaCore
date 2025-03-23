@@ -16,7 +16,8 @@ public class ConditionError {
                 System.out.println("Vous êtes majeur.");
             }
             // pas de limitation et donc 18+ ou 60+ rentrait ici
-            else if(age > 18 && age < 61) {
+            //j'ai fais le changement <= 60 au lieu de < 61 comme indiquer dans ta vidéo
+            else if(age > 18 && age <= 60) {
                 System.out.println("Vous êtes un adulte.");
             }
             else if(age > 60 && age < 100) {

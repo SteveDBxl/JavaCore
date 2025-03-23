@@ -7,7 +7,8 @@ public class MaxOfThree {
         int a,b,c;
         a = 2;
         b = 2;
-        c = 5;
+        c = 2;
+
 
         if(a > b && a > c){
 
@@ -21,22 +22,21 @@ public class MaxOfThree {
 
             System.out.println( c + " est plus grand que => "+ a + " et " + b);
         }
-        else if( b == a && a > c){
+        else if( b == a ){
 
-            System.out.println( a + " et " + b + " sont égaux et plus grand que => "+ c);
+            System.err.println( a + " et " + b + " sont égaux ");
         }
-        else if( c == b && b > a){
+        else if( c == b ){
 
-            System.out.println(b + " et " + c + " sont égaux et plus grand que => "+ a);
+            System.err.println(b + " et " + c + " sont égaux  ");
         }
-        else if( a == c && a > b){
+        else if( a == c ){
 
-            System.out.println( a + " et " + c + " sont égaux et plus grand que => "+ b);
+            System.err.println( a + " et " + c + " sont égaux ");
         }
-        System.err.println();
+
         else{
-
-            System.out.println("les trois sont égaux");
+            System.err.println("Toutes les valeurs sont égales, il n'y a en pas une plus grande que les autres.");
         }
     }
 }

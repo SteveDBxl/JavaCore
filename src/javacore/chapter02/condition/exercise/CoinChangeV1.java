@@ -4,38 +4,62 @@ public class CoinChangeV1 {
     public static void main(String[] args) {
 
         //0, 21,52,113;
-        int totalBill = 10;
-        int amountPaid = 123;
+        int totalBill =10;
+        int amountPaid =123;
+        int billet50 = 50;
+        int billet20 = 20;
+        int billet10 =10;
+        int billet5 = 5;
+        int piece2 = 2;
+        int piece1 =1;
+
+        int fifty = 50;
+        int twenty = 20;
+        int ten =10;
+        int five = 5;
+        int two = 2;
+        int one =1;
 
         int stillRemainToGiveBack = amountPaid - totalBill;
 
-        if(stillRemainToGiveBack >= 50){
-            System.out.println(stillRemainToGiveBack / 50 + " x 50");
-            stillRemainToGiveBack -= (stillRemainToGiveBack / 50) * 50;
-        }
-        if(stillRemainToGiveBack >= 20){
-            System.out.println(stillRemainToGiveBack / 20 + " x 20");
-            stillRemainToGiveBack -= (stillRemainToGiveBack / 20) * 20;
-            System.out.println(stillRemainToGiveBack);
-        }
-        if(stillRemainToGiveBack >= 10){
-            System.out.println(stillRemainToGiveBack / 10 + " x 10");
-            stillRemainToGiveBack -= (stillRemainToGiveBack / 10) *10;
-        }
-        if(stillRemainToGiveBack >= 5){
-            System.out.println(stillRemainToGiveBack / 5 + " x 5");
-            stillRemainToGiveBack -= (stillRemainToGiveBack / 5) * 5 ;
-        }
-        if(stillRemainToGiveBack >= 2){
-            System.out.println(stillRemainToGiveBack / 2 + " x 2");
-            stillRemainToGiveBack -= (stillRemainToGiveBack / 2) *2;
-        }
-        if(stillRemainToGiveBack >= 1){
-            System.out.println(stillRemainToGiveBack + " x 1");
-            stillRemainToGiveBack -= (stillRemainToGiveBack / 1) * 1;
-            System.out.println(stillRemainToGiveBack);
+        int remainOnFifty = stillRemainToGiveBack/fifty;
+        int remainOnTwenty = stillRemainToGiveBack/twenty;
+        int remainOnTen = stillRemainToGiveBack/ten;
+        int remainOnFive = stillRemainToGiveBack/five;
+        int remainOnTwo = stillRemainToGiveBack/two;
+        int remainOnOne = stillRemainToGiveBack/one;
+
+        if(stillRemainToGiveBack >= fifty){
+            System.out.println(remainOnFifty + " x " +fifty);
+            stillRemainToGiveBack -= remainOnFifty * fifty;
+            remainOnTwenty = stillRemainToGiveBack/twenty;
         }
 
 
+        if(stillRemainToGiveBack >= twenty){
+            System.out.println(remainOnTwenty + " x " + twenty);
+            stillRemainToGiveBack -= remainOnTwenty * twenty;
+            remainOnTen = stillRemainToGiveBack/ten;
+
+        }
+        if(stillRemainToGiveBack >= ten){
+            System.out.println(remainOnTen + " x "+ ten);
+            stillRemainToGiveBack -= remainOnTen * ten;
+            remainOnFive = stillRemainToGiveBack/five;
+        }
+        if(stillRemainToGiveBack >= five){
+            System.out.println(remainOnFive + " x " + five);
+            stillRemainToGiveBack -= remainOnFive * five ;
+            remainOnTwo = stillRemainToGiveBack/two;
+        }
+        if(stillRemainToGiveBack >= two){
+            System.out.println(remainOnTwo + " x " + two);
+            stillRemainToGiveBack -= remainOnTwo * two;
+            remainOnOne = stillRemainToGiveBack/one;
+        }
+        if(stillRemainToGiveBack >= one){
+            System.out.println(remainOnOne + " x " + one);
+            stillRemainToGiveBack -= remainOnOne *one;
+        }
     }
 }
