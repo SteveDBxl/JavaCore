@@ -10,23 +10,19 @@ public class ScholarshipEligibility {
         //39999, 40000, 60000, 60001
         int householdIncome =40001;
         // true, false
-        boolean hasExtracurricular = false;
+        boolean hasExtracurricular = true;
 
-        if(((householdIncome < 40000 && studentGpa > 3.5))&& hasExtracurricular){
+        if(householdIncome < 40000 && studentGpa > 3.5 && hasExtracurricular){
 
             System.out.println("Vous avez droit à une bourse complète");
-        }
-        if(hasExtracurricular && studentGpa > 3.5 &&  householdIncome < 60000){
-
+            //je n'avais pas compris l'énnoncé comme étant que hors de ces cas là on avait droit à rien
+            //remise dans le même ordre que la condition du dessus
+        } else if (householdIncome < 60000 && studentGpa > 3.5 && hasExtracurricular) {
             System.out.println("Vous avez droit à une bourse partielle");
         }
-        if((!hasExtracurricular || hasExtracurricular) && studentGpa <= 3.5 && householdIncome > 60000){
-
+        else{
             System.out.println("tant pis pour les études");
         }
-        else{
 
-            System.out.println("aucune donnée de comment traité le cas");
-        }
     }
 }
