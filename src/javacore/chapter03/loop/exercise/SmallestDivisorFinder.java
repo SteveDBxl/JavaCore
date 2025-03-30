@@ -5,7 +5,7 @@ public class SmallestDivisorFinder {
     public static void main(String [] args){
 
         //2,3,5,20,179
-        int number = 179;
+        int number = 4;
         int divisor = 2;
 
         while (number % divisor != 0){
@@ -16,7 +16,7 @@ public class SmallestDivisorFinder {
             System.out.println(number + " est premier");
         }
         else{
-            System.out.println(number);
+            System.out.println(number + " n'est pas premier");
         }
 
     }
