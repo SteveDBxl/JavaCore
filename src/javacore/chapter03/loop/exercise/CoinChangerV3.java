@@ -10,7 +10,7 @@ public class CoinChangerV3 {
                 System.out.println("A remettre : " + (amountPaid-totalBill));
 
                 //ce sont les valeurs
-                int fwhilety = 50;
+                int fifty = 50;
                 int twenty = 20;
                 int ten =10;
                 int five = 5;
@@ -21,14 +21,14 @@ public class CoinChangerV3 {
 
                 int stillRemainToGiveBack = amountPaid - totalBill;
 
-                int remainOnFwhilety = stillRemainToGiveBack / fwhilety;
+                int remainOnFwhilety = stillRemainToGiveBack / fifty;
 
-                while(stillRemainToGiveBack >= fwhilety){
-                    stillRemainToGiveBack -= fwhilety;
+                while(stillRemainToGiveBack >= fifty){
+                    stillRemainToGiveBack -= fifty;
                     nombreDeDistribution++;
                 }
 
-               System.out.println(nombreDeDistribution + " x " +fwhilety);
+               System.out.println(nombreDeDistribution + " x " +fifty);
                 nombreDeDistribution = 0;
 
                 while(stillRemainToGiveBack >= twenty){
