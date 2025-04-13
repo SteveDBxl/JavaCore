@@ -6,17 +6,18 @@ public class ArmstrongNumbers {
 
         int numberTry = 0;
         int numberTryCopy = numberTry;
-        int somme = 1;
-        long finalSomme = 0;
-        int exposant = 0;
         int calculExposant = 1;
-        int lastDigit = 0;
-        int howManyDigit;
         int numberOfAmstrong = 0;
+        int currentAmstrongNumber = 10;
 
-        while (numberOfAmstrong <= 30) {
+        //25 ça passe :)
+        while (numberOfAmstrong <= 25) {
+            int somme = 1;
+            int howManyDigit = numberTry;
+            int lastDigit = 0;
+            long finalSomme = 0;
+            int exposant = 0;
             numberTry = numberTryCopy;
-            howManyDigit = numberTry;
             while (howManyDigit > 0) {
                 howManyDigit /= 10;
                 exposant++;
@@ -34,13 +35,11 @@ public class ArmstrongNumbers {
                 somme = 1;
             }
 
-            if (numberTryCopy == finalSomme) {
+            if (finalSomme == numberTryCopy) {
                 System.out.println(numberTryCopy + " est un nombre narcissique !!!");
                 numberOfAmstrong++;
             }
             numberTryCopy++;
-            exposant = 0;
-            finalSomme = 0;
         }
     }
 }

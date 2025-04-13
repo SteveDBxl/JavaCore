@@ -1,6 +1,7 @@
 package javacore.chapter01.variable.exercise;
 
-public class SalaryForecast {
+public class
+SalaryForecast {
     public static void main(String []args)
     {
         byte tauxHoraire = 25;

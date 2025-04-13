@@ -5,16 +5,16 @@ public class FibonacciCalculator {
     public static void main (String[] args){
 
         int fibonacciQuantityToFind = 50;
-        int fibonacciPrev = 0;
-        int finbonacciCurrent = 1;
-        int fibonacciNext = 0;
+        long fibonacciPrev = 0;
+        long fibonacciCurrent = 1;
+        long fibonacciNext = 0;
 
-        System.out.println(fibonacciPrev + "\n" + finbonacciCurrent);
+        System.out.println(fibonacciPrev + "\n" + fibonacciCurrent);
         for(int index = 3; index <= fibonacciQuantityToFind; index++){
-            fibonacciNext = fibonacciPrev + finbonacciCurrent;
+            fibonacciNext = fibonacciPrev + fibonacciCurrent;
             System.out.println(fibonacciNext);
-            fibonacciPrev = finbonacciCurrent;
-            finbonacciCurrent = fibonacciNext;
+            fibonacciPrev = fibonacciCurrent;
+            fibonacciCurrent = fibonacciNext;
 
         }
 
