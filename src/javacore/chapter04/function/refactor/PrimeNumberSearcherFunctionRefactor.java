@@ -1,27 +1,26 @@
 package javacore.chapter04.function.refactor;
 
+import java.util.Scanner;
+
 public class PrimeNumberSearcherFunctionRefactor {
 
     public static boolean isPrime(int number) {
-        boolean isEven;
-        int nbDePremierVoulu = 100;
-        for (int potentielPremier = 2; nbDePremierVoulu > 0; potentielPremier++) {
+        for (int potentielPremier = 2; potentielPremier >= (number / 2); potentielPremier++) {
 
-            //potentielPremier /2 car on aurait déjà trouvé un candidat dans la première moitié
-            for (int potentielDiviseur = 2; potentielDiviseur <= potentielPremier / 2; potentielDiviseur++) {
-
-                if (potentielPremier % potentielDiviseur == 0) {
-                    return false;
-
-                } else {
-                    return true;
-                }
+            if(number % potentielPremier == 0){
+                System.out.println(number + " n'est pas premier");
+                return false;
             }
 
         }
+        System.out.println(number + " est premier");
         return true;
     }
     public static void main(String[] args){
+
+        int checkIfPrime = 151;
+
+        isPrime(checkIfPrime);
 
     }
 }
