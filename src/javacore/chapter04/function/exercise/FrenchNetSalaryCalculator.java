@@ -13,7 +13,7 @@ public class FrenchNetSalaryCalculator {
     }
 
     static double applyTaxAllowance(double annualNetSalary, double taxAllowancePercentage){
-        return (annualNetSalary - ( 1 - taxAllowancePercentage));
+        return (annualNetSalary *  taxAllowancePercentage);
     }
 
     static double applyRevenueTax(double annualNetSalary){
@@ -59,19 +59,27 @@ public class FrenchNetSalaryCalculator {
         double salary = 34000;
         double salaryBeforTaxe = salary;
         double abattement = 0.9;
-        salary *= abattement;
         double ouvrier = 0.23;
         double employe = 0.25;
         double smic = 11.07;
+        double median = 17.5;
+        double moyen = 22.5;
+        double riche = 35;
         double annualGrossSalary;
         double annualNetSalary;
+        double afterTaxSalary;
 
 
-        annualGrossSalary =  calculateAnnualGrossSalary(smic);
+        annualGrossSalary =  calculateAnnualGrossSalary(riche);
         System.out.println(annualGrossSalary);
 
         annualNetSalary = applySocialCharges(annualGrossSalary, ouvrier);
         System.out.println(annualNetSalary);
+
+        afterTaxSalary = applyTaxAllowance(annualNetSalary, abattement);
+        System.out.println(afterTaxSalary);
+
+        System.out.println(applyRevenueTax(afterTaxSalary));
 
         //System.out.println("Vous avez touché " + salaryBeforTaxe + " et " + salary + " était imposable.\nSur ce vous avez payé "
          //       );
