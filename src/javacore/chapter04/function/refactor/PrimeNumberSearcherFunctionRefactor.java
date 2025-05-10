@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class PrimeNumberSearcherFunctionRefactor {
 
     public static boolean isPrime(int number) {
-        for (int potentielPremier = 2; potentielPremier >= (number / 2); potentielPremier++) {
+        for (int potentielPremier = 2; potentielPremier <= (number / 2); potentielPremier++) {
 
             if(number % potentielPremier == 0){
                 System.out.println(number + " n'est pas premier");
@@ -18,9 +18,16 @@ public class PrimeNumberSearcherFunctionRefactor {
     }
     public static void main(String[] args){
 
-        int checkIfPrime = 151;
+        int numberOfPrimeNow = 0;
+        int tryPrime = 3;
+        int numberOfPrimeWanted = 100;
+        while(numberOfPrimeNow < numberOfPrimeWanted) {
+            if(isPrime(tryPrime)){
+                numberOfPrimeNow++;
+            }
+            tryPrime++;
 
-        isPrime(checkIfPrime);
+        }
 
     }
 }
