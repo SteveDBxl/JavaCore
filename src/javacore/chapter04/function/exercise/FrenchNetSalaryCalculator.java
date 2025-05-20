@@ -1,10 +1,12 @@
 package javacore.chapter04.function.exercise;
 
+import java.util.Scanner;
+
 public class FrenchNetSalaryCalculator {
 
-    static double calculateAnnualGrossSalary(double hourlyGrossSalary){
+    static double calculateAnnualGrossSalary(double hourlyGrossSalary, int numberHourAWeek, int numberWeekAYear){
 
-        return (hourlyGrossSalary * 35 * 52) ;
+        return (hourlyGrossSalary * numberHourAWeek * numberWeekAYear) ;
     }
 
     static double applySocialCharges(double annualGrossSalary, double socialChargePercentage){
@@ -17,6 +19,7 @@ public class FrenchNetSalaryCalculator {
     }
 
     static double applyRevenueTax(double annualNetSalary){
+        //variable mise en final
         double taxe41 = (180294 - 83824) * 0.41;
         double taxe30 = (83823 - 29316) * 0.3;
         double taxe11 = (29315 - 11498) * 0.11;
@@ -56,27 +59,34 @@ public class FrenchNetSalaryCalculator {
     }
     public static void main(String[] args){
 
+        int numberHourAWeek;
+        int numberWeekAYear;
         double salary = 34000;
         double salaryBeforTaxe = salary;
-        double abattement = 0.9;
-        double ouvrier = 0.23;
-        double employe = 0.25;
-        double smic = 11.07;
-        double median = 17.5;
-        double moyen = 22.5;
-        double riche = 35;
+        double tauxAbattement = 1 - 0.1;
+        double cotisationSocialOuvrier = 1 - 0.23;
+        double cotisationSocialCadre =  1 - 0.25;
+        double tauxHoraireSmic = 11.07;
+        double tauxHoraireMedian = 17.5;
+        double tauxHoraireMoyen = 22.5;
+        double tauxHoraireRiche = 35;
         double annualGrossSalary;
         double annualNetSalary;
         double afterTaxSalary;
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("combien d'heure travaillez vous par semaine?");
+        numberHourAWeek = sc.nextInt();
+        System.out.println("combien de semaine travaillez vous dans l'année");
+        numberWeekAYear = sc.nextInt();
 
-        annualGrossSalary =  calculateAnnualGrossSalary(riche);
+        annualGrossSalary =  calculateAnnualGrossSalary(tauxHoraireRiche, numberHourAWeek, numberWeekAYear);
         System.out.println(annualGrossSalary);
 
-        annualNetSalary = applySocialCharges(annualGrossSalary, ouvrier);
+        annualNetSalary = applySocialCharges(annualGrossSalary, cotisationSocialOuvrier);
         System.out.println(annualNetSalary);
 
-        afterTaxSalary = applyTaxAllowance(annualNetSalary, abattement);
+        afterTaxSalary = applyTaxAllowance(annualNetSalary, tauxAbattement);
         System.out.println(afterTaxSalary);
 
         System.out.println(applyRevenueTax(afterTaxSalary));
