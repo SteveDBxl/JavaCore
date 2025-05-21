@@ -78,6 +78,7 @@ public class FrenchNetSalaryCalculator {
         System.out.println(afterTaxSalary);
 
         System.out.println("tax : " + applyRevenueTax(afterTaxSalary));
+        System.out.println("salaire de : " + (afterTaxSalary - applyRevenueTax(afterTaxSalary)) + " après taxes");
 
         //System.out.println("Vous avez touché " + salaryBeforTaxe + " et " + salary + " était imposable.\nSur ce vous avez payé "
          //       );
