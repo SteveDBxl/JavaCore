@@ -19,7 +19,6 @@ public class BasicStopwatchV2 {
     }
 
     public void displayTime(){
-
         System.out.println(this.heures + " :" + this.minutes + " :" + this.seconde);
     }
     public static void main(String args[]){
