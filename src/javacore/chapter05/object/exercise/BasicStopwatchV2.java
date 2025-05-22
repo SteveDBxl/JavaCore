@@ -20,6 +20,8 @@ public class BasicStopwatchV2 {
 
     public void displayTime(){
         System.out.println(this.heures + " :" + this.minutes + " :" + this.seconde);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
     public static void main(String args[]){
         BasicStopwatchV2 watch = new BasicStopwatchV2();

@@ -4,7 +4,7 @@ public class PracticeObject {
 
     public static void main(String[] args){
 
-        PracticeObjectCar car = new PracticeObjectCar();
+        PracticeObjectCar car = new PracticeObjectCar("UEFJ85479LK", "Ferrari", "F458", "Rouge", 260000);
         car.brand = "Ferrari";
         car.model = "F458";
         car.color = "Rouge";
