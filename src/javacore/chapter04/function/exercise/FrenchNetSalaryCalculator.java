@@ -5,15 +5,18 @@ import java.util.Scanner;
 public class FrenchNetSalaryCalculator {
 
     static final double TAX_41 = (180294 - 83824) * 0.41;
-    static final double TAX_3 = (83823 - 29316) * 0.3;
+    static final double TAX_30 = (83823 - 29316) * 0.3;
     static final double TAX_11 = (29315 - 11498) * 0.11;
-    static double calculateAnnualGrossSalary(double hourlyGrossSalary, int numberHourAWeek, int numberWeekAYear){
+    static final int UPPERTAXBRACKET = 180294;
+    static final int SECONDTAXBRACKET = 83824;
+    static final int THIRDTAXBRACKET = 29316;
+    static final int LOWESTTAXBRACKET = 11498;
 
+    static double calculateAnnualGrossSalary(double hourlyGrossSalary, int numberHourAWeek, int numberWeekAYear){
         return (hourlyGrossSalary * numberHourAWeek * numberWeekAYear) ;
     }
 
     static double applySocialCharges(double annualGrossSalary, double socialChargePercentage){
-
         return annualGrossSalary * socialChargePercentage;
     }
 
@@ -25,22 +28,22 @@ public class FrenchNetSalaryCalculator {
 
         double taxPayed = 0;
 
-        if (annualNetSalary > 180294) {
-            taxPayed += (annualNetSalary - 180295) * 0.45;
-            annualNetSalary = annualNetSalary - (annualNetSalary - 180295);
+        if (annualNetSalary > UPPERTAXBRACKET) {
+            taxPayed += (annualNetSalary - UPPERTAXBRACKET) * 0.45;
+            annualNetSalary =  UPPERTAXBRACKET;
         }
 
-        if (annualNetSalary >= 83824) {
-            taxPayed += (annualNetSalary - 83824) * 0.41;
-            annualNetSalary = annualNetSalary - (annualNetSalary - 180294);
+        if (annualNetSalary >= SECONDTAXBRACKET) {
+            taxPayed += (annualNetSalary - SECONDTAXBRACKET) * 0.41;
+            annualNetSalary = SECONDTAXBRACKET;
         }
 
-        if (annualNetSalary >= 29316) {
-            taxPayed += (annualNetSalary - 29316) * 0.3;
-            annualNetSalary = annualNetSalary - (annualNetSalary - 83824);
+        if (annualNetSalary >= THIRDTAXBRACKET) {
+            taxPayed += (annualNetSalary - THIRDTAXBRACKET) * 0.3;
+            annualNetSalary = THIRDTAXBRACKET;
         }
-        if (annualNetSalary >= 11498) {
-            taxPayed += (annualNetSalary - 11498) * 0.11;
+        if (annualNetSalary >= LOWESTTAXBRACKET) {
+            taxPayed += (annualNetSalary - LOWESTTAXBRACKET) * 0.11;
 
         }
 

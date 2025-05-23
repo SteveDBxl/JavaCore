@@ -4,12 +4,12 @@ package javacore.chapter05.object.exercise;
 
 
 public class Pen {
-    String nom = "Stylo";
-    String couleur = "Bleu";
-    String fabricant = "Bic";
-    double prix = 2.5;
-    int poid = 15;
-    int quantite = 10;
+    String nom;
+    String couleur;
+    String fabricant;
+    double prix = 0;
+    int poid = 0;
+    int quantite;
 
     public void displayInformation(){
         System.out.println("Nom : " +  this.nom +" ,Couleur : " + this.couleur + " ,Prix : " + this.prix + " ,Quantité : " + this.quantite +

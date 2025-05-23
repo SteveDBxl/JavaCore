@@ -2,11 +2,11 @@ package javacore.chapter05.object.exercise;
 
 public class LibraryBook {
 
-    String titre = "silmarillion";
-    String auteur = "J.R.R. Tolkien";
-    String  isnb = "9782266121026";
-    int publishingYear = 1977;
-    boolean available = true;
+    String titre;
+    String auteur;
+    String  isnb;
+    int publishingYear;
+    boolean available;
 
     public void getInformation(){
 
