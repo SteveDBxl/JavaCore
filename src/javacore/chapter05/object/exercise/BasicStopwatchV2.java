@@ -8,28 +8,58 @@ public class BasicStopwatchV2 {
     int seconde = 0;
     int minutes = 0;
     int heures = 0;
+    String nom;
+
+    public BasicStopwatchV2(String nom){
+        this.nom = nom;
+    }
 
     public void launch() throws InterruptedException{
-        sleep(200);
+
         this.seconde++;
         if(seconde >= 60){
-            this.minutes = seconde / 60;
+            minutes++;
+            seconde = 0;
         }
-        seconde %= 60;
+        if(minutes >= 60){
+            heures++;
+            minutes = 0;
+        }
+        sleep(1000);
     }
 
-    public void displayTime(){
-        System.out.println(this.heures + " :" + this.minutes + " :" + this.seconde);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+    public void displayInfo(){
+        System.out.print(this.nom + " : ");
+
+        if(this.heures < 10){
+            System.out.print("0" + this.heures + " : ");
+        }
+        else{
+            System.out.print(this.heures + " : ");
+        }
+        if(this.minutes < 10){
+            System.out.print("0" + this.minutes + " : ");
+        }
+        else{
+            System.out.print(this.minutes +" : ");
+        }
+        if(this.seconde < 10){
+            System.out.print("0" + this.seconde);
+        }
+        else{
+            System.out.print(this.seconde);
+        }
+        System.out.print("\r");
+
     }
     public static void main(String args[]){
-        BasicStopwatchV2 watch = new BasicStopwatchV2();
+        BasicStopwatchV2 watch = new BasicStopwatchV2("Oeuf Dur");
+
 
         try {
             while (true) {
                 watch.launch();
-                watch.displayTime();
+                watch.displayInfo();
 
             }
         }catch(Exception e){
