@@ -3,9 +3,39 @@ import java.util.Scanner;
 
 public class UserQuestionnaire {
 
+    int age;
+    String name;
+    String response;
+    double result;
+    boolean trueOrFalse;
+
+    public void setAge(int age){
+        this.age = age;
+    }
+     public void setName(String name){
+        this.name = name;
+     }
+
+     public void setResponse(String response){
+        this.response = response;
+     }
+
+     public void setResult(double result){
+        this.result = result;
+     }
+
+     public void setTrueOrFalse(boolean trueOrFalse){
+        this.trueOrFalse = trueOrFalse;
+     }
+
+     public void displayResponses(){
+         System.out.println("votre nom : " + name + "\nvotre age : " + age + "\non continue? : " + "\nRésultat de 5/2 : " + result);
+     }
 
 
     public static void main(String [] args){
+
+        UserQuestionnaire uq = new UserQuestionnaire();
         Scanner sc = new Scanner(System.in);
         String name;
         int age;
@@ -13,28 +43,32 @@ public class UserQuestionnaire {
         boolean yesOrNo;
         String response;
 
-
-        System.out.println("Quel est votre name?\n");
+        System.out.println("Quel est votre nom?");
         name = sc.nextLine();
-        // System.out.println(name + " est ce bien votre nom?");
+        uq.setName(name);
+
         System.out.println("Quel est votre age?");
         age = sc.nextInt();
+        uq.setAge(age);
+
         System.out.println("Voulez vous continuer à répondre aux questions? (true ou flase)");
         yesOrNo = sc.nextBoolean();
+        uq.setTrueOrFalse(yesOrNo);
 
-       // System.out.println("Souhaitez vous continuer à répondre aux questions? (oui ou non)");
-       // response = sc.nextLine();
+        System.out.println("Souhaitez vous continuer à répondre aux questions? (oui ou non)");
+        response = sc.next();
+        uq.setResponse(response);
 
-       /* switch (response){
+       if(!response.equals("oui")){
+           System.out.println("Au revoir!");
+           return;
+       }
 
-            case "oui" :
-                System.out.println("quel est le résultat de 5/2 ?");
-                result = sc.nextDouble();
-                break;
+       System.out.println("Quel est la valeur de 5/2 (x,x si nécessaire)");
+       result = sc.nextDouble();
+       uq.setResult(result);
 
-            case "non":
-                return;
-        }*/
+       uq.displayResponses();
 
     }
 }
