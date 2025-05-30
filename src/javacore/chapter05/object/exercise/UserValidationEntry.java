@@ -7,15 +7,20 @@ import java.util.Scanner;
 
 public class UserValidationEntry {
 
+    String day;
+
+    public void setDay(String day){
+        this.day = day;
+    }
 
     public static void main(String[] args){
 
-        String day;
+        UserValidationEntry day = new UserValidationEntry();
         Scanner sc = new Scanner(System.in);
         System.out.println("Quel jour sommes nous?" );
 
         do{
-            day = sc.next().toLowerCase(Locale.ROOT);
-        }while(!day.equals("lundi")  && !day.equals("mardi")  && !day.equals("mercredi")  && !day.equals("jeudi")  && !day.equals("vendredi")  && !day.equals("samedi")  && !day.equals("dimanche") );
+            day.day = sc.next().toLowerCase(Locale.ROOT);
+        }while(!day.day.equals("lundi")  && !day.day.equals("mardi")  && !day.day.equals("mercredi")  && !day.day.equals("jeudi")  && !day.day.equals("vendredi")  && !day.day.equals("samedi")  && !day.day.equals("dimanche") );
     }
 }
