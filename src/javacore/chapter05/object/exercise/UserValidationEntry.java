@@ -2,6 +2,7 @@ package javacore.chapter05.object.exercise;
 
 import javacore.chapter01.variable.exercise.SalaryForecast;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserValidationEntry {
@@ -14,8 +15,7 @@ public class UserValidationEntry {
         System.out.println("Quel jour sommes nous?" );
 
         do{
-            day = sc.next();
-
-        }while(day != "lundi" || day !=  "mardi" || day !=  "mercredi" || day !=  "jeudi" || day != "vendredi" || day != "samedi" || day !=  "dimanche");
+            day = sc.next().toLowerCase(Locale.ROOT);
+        }while(!day.equals("lundi")  && !day.equals("mardi")  && !day.equals("mercredi")  && !day.equals("jeudi")  && !day.equals("vendredi")  && !day.equals("samedi")  && !day.equals("dimanche") );
     }
 }
