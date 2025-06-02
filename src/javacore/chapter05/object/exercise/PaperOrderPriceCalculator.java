@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 public class PaperOrderPriceCalculator {
 
-    static final int minQuantityOrderPossible = 200;
-    static final int maxQuantityOrderPossible = 200000;
-    static final int quantityOrderedLevel30000 = 30000;
-    static final int quantityOrderedLevel10000 = 10000;
+    static final int MIN_QUANTITY_ORDER_POSSIBLE = 200;
+    static final int MAX_QUANTITY_ORDER_POSSIBLE = 200000;
+    static final int QUANTITY_ORDERED_LEVEL_30000 = 30000;
+    static final int QUANTITY_ORDERED_LEVEL_10000 = 10000;
 
-    static final double priceFrom0To10000 = 0.01;
-    static final double priceFrom10001To30000 = 0.005;
-    static final double priceFrom30001To200000 = 0.0025;
-    static final double applyTax = 1.2;
+    static final double PRICE_FROM_0_TO_10000 = 0.01;
+    static final double PRICE_FROM_10001_TO_30000 = 0.005;
+    static final double PRICE_FROM_30001_TO_200000 = 0.0025;
+    static final double APPLY_TAX = 1.2;
 
 
-    double priceOfTheOrder;
+    double priceOfTheOrderHT;
     double priceOfTheOrderTTC;
     int quantityOrdered;
 
@@ -26,23 +26,23 @@ public class PaperOrderPriceCalculator {
     public double priceCalculator(){
         double finalPrice = 0;
 
-        if(quantityOrdered > quantityOrderedLevel30000){
-            finalPrice += (quantityOrdered - quantityOrderedLevel30000) * priceFrom30001To200000;
-            quantityOrdered = quantityOrderedLevel30000;
+        if(this.quantityOrdered > QUANTITY_ORDERED_LEVEL_30000){
+            finalPrice += (this.quantityOrdered - QUANTITY_ORDERED_LEVEL_30000) * PRICE_FROM_30001_TO_200000;
+            this.quantityOrdered = QUANTITY_ORDERED_LEVEL_30000;
         }
-        if(quantityOrdered > quantityOrderedLevel10000){
-            finalPrice += (quantityOrdered - quantityOrderedLevel10000) * priceFrom10001To30000;
-            quantityOrdered = quantityOrderedLevel10000;
+        if(this.quantityOrdered > QUANTITY_ORDERED_LEVEL_10000){
+            finalPrice += (this.quantityOrdered - QUANTITY_ORDERED_LEVEL_10000) * PRICE_FROM_10001_TO_30000;
+            this.quantityOrdered = QUANTITY_ORDERED_LEVEL_10000;
         }
-        if(quantityOrdered > 0){
-            finalPrice += quantityOrdered * priceFrom0To10000;
+        if(this.quantityOrdered > 0){
+            finalPrice += this.quantityOrdered * PRICE_FROM_0_TO_10000;
         }
 
         return finalPrice;
     }
 
     public double addDeliveryCost(){
-        return this.priceOfTheOrder + 9.99;
+        return this.priceOfTheOrderHT + 9.99;
     }
 
     public void errorMessage(){
@@ -54,8 +54,8 @@ public class PaperOrderPriceCalculator {
     }
 
     public void setPriceOfTheOrder(double price){
-        this.priceOfTheOrder = price;
-        this.priceOfTheOrderTTC = price * applyTax;
+        this.priceOfTheOrderHT = price;
+        this.priceOfTheOrderTTC = price * APPLY_TAX;
     }
 
 
@@ -81,11 +81,11 @@ public class PaperOrderPriceCalculator {
         price = paperOrder.priceCalculator();
         paperOrder.setPriceOfTheOrder(price);
 
-        if(paperOrder.priceOfTheOrder < 200){
+        if(paperOrder.priceOfTheOrderHT < 200){
             paperOrder.addDeliveryCost();
         }
 
-        System.out.println("prix HT : " + paperOrder.priceOfTheOrder);
+        System.out.println("prix HT : " + paperOrder.priceOfTheOrderHT);
         System.out.println("prix TTC : " + paperOrder.priceOfTheOrderTTC);
     }
 }
