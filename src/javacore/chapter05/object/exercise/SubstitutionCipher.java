@@ -1,5 +1,8 @@
 package javacore.chapter05.object.exercise;
 
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class SubstitutionCipher {
@@ -61,6 +64,38 @@ public class SubstitutionCipher {
         return encodeMessage;
     }
 
+    public String decode(String textToDecode, String encodeAlphabet, String alphabet, int iteration){
+
+        String word = "";
+
+        for(int index = 0; index < textToDecode.length(); index++){
+            int indexOfChar = alphabet.indexOf(textToDecode.charAt(index));
+            if(textToDecode.charAt(index) == ' ' || textToDecode.charAt(index) == '!'){
+                word += textToDecode.charAt(index);
+            }
+            else{
+                word += encodeAlphabet.charAt(indexOfChar);
+            }
+        }
+        return word;
+    }
+
+    public boolean verifAlphabetProposition(String alphabet){
+        Hashtable<Object, Object> proposedAlphabet = new Hashtable<>();
+
+        for(int index = 0; index < alphabet.length(); index++){
+            if(proposedAlphabet.containsKey(alphabet.charAt(index)) || alphabet.charAt(index) < 97 || alphabet.charAt(index) > 122){
+                return false;
+            }
+            else{
+                proposedAlphabet.put(alphabet.charAt(index), 1 );
+            }
+
+        }
+
+        return true;
+    }
+
 
 
     public static void main(String[] args) {
@@ -103,6 +138,8 @@ public class SubstitutionCipher {
         textEncodeXTime = sc.cipher(textToEncrypt, latinAlphabet, substitutionAlphabet, iterationChoice);
         System.out.println(textEncodeXTime + " : à été encoder " + iterationChoice + " fois");
 
+        System.out.println(sc.decode(textEncodeXTime, latinAlphabet, substitutionAlphabet, 1) + " : décodage");
+
         //textEncodeXTime = sc.decodeMessage(textEncodeXTime, substitutionAlphabet, latinAlphabet, 1);
         //System.out.println(textEncodeXTime);
         System.out.println("Bonjour, veuillez entrer un text");
@@ -115,5 +152,14 @@ public class SubstitutionCipher {
         if(userSC.encode){
             System.out.println(userSC.cipher(userSC.textFromUser, latinAlphabet, substitutionAlphabet, userSC.iterationWanted ));
         }
+
+        String proposedAlphabet = "";
+
+        do{
+            System.out.println("Veuillez proposer un alphabet");
+            proposedAlphabet = scanner.next().toLowerCase();
+
+        }while(!userSC.verifAlphabetProposition(proposedAlphabet));
+
     }
 }
