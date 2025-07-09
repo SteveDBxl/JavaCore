@@ -13,8 +13,20 @@ public class GradesAnalyzer {
         this.schoolReport = new int[2];
     }
 
+    public int[] newSchoolReport(int[] schoolReport){
+        //changement par this.schoolReport
+        this.schoolReport = new int[schoolReport.length + 1 ];
+
+        for(int index = 0; index < schoolReport.length; index++){
+
+            this.schoolReport[index] = schoolReport[index];
+        }
+
+        return this.schoolReport;
+    }
+
     public boolean possibilityOfDone(String word){
-        switch(word){
+        switch(word.trim()){
             case "oui" :
                 return true;
 
@@ -26,20 +38,6 @@ public class GradesAnalyzer {
 
             default :
                 return false;
-
-        }
-    }
-
-    public void setGrade(int [] schoolReport){
-        int index = 0;
-        String done = "";
-        Scanner sc = new Scanner(System.in);
-
-        while(index < 30 || possibilityOfDone(done)){
-            this.schoolReport[index] = schoolReport[index];
-            index++;
-            System.out.println("Avez vous fini?");
-            done = sc.next();
 
         }
     }
@@ -113,30 +111,32 @@ public class GradesAnalyzer {
 
         int numberOfGrade;
         int grade;
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Combien de note voulez vous rentrer?");
-        GradesAnalyzer ga = new GradesAnalyzer();
-
-        int [] gradeReport = new int[ga.schoolReport.length];
         int index = 0;
         String done = "false";
 
-        while(index < ga.schoolReport.length && ga.possibilityOfDone(done)){
+        Scanner sc = new Scanner(System.in);
+        GradesAnalyzer ga = new GradesAnalyzer();
+
+        int [] gradeReport = new int[ga.schoolReport.length];
+
+        //modif comparaison sur gradeReport.length plutot que ga.schoolReport.length
+        while(index < gradeReport.length && !ga.possibilityOfDone(done)){
             System.out.println("Quelle est la note que vous voulez rentrer?");
+
             gradeReport[index] = sc.nextInt();
             if(ga.verifyGradeLadder(gradeReport[index])) {
                 index++;
                 System.out.println("Avez vous fini?");
                 done = sc.next();
-                ga.schoolReport = new int[ga.schoolReport.length + 1];
             }
             else
             {
                 System.out.println("note rentrée non correspondante aux attentes");
             }
-
+            //agrandissement du tableau fonction de l'index minimum et si on a des notes encore à entrer
+            if(index >= 2 && !ga.possibilityOfDone(done)){
+                gradeReport = ga.newSchoolReport(gradeReport);
+            }
         }
     }
 }
