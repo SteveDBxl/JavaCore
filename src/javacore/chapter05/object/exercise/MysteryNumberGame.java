@@ -27,7 +27,7 @@ public class MysteryNumberGame {
 
         while (essai > 0 && !trouve) {
 
-            int proposition = demanderProposition();
+            int proposition = getUserInput();
 
             if (proposition == numberToFind) {
                 System.out.println("Bravo ! Vous avez deviné le nombre !");
@@ -53,10 +53,24 @@ public class MysteryNumberGame {
 
     }
 
-    private int demanderProposition() {
+    private int getUserInput() {
 
-        System.out.print("Entrez votre proposition : ");
-        return scanner.nextInt();
+        boolean good = false;
+        int number = 0;
+
+        while(!good){
+            System.out.println("veuillez saisir un nombre");
+            String entry = scanner.nextLine();
+            try{
+                number = Integer.parseInt(entry);
+                good = true;
+            }catch(NumberFormatException e){
+                System.out.println("Mauvaise entrée!!!");
+            }
+        }
+
+        return number;
+
     }
 
     public static void main(String[]args){
